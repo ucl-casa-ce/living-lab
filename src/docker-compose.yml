@@ -102,7 +102,6 @@ services:
 networks:
   df-network:
     driver: bridge
-    external: true
 
 #volumes:
 #  df_postgres_data:
