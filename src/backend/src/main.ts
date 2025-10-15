@@ -24,6 +24,6 @@ async function bootstrap() {
     prefix: '/uploads/', // Define the URL prefix for accessing the files
   });
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.BACKEND_PORT ?? 3000);
 }
 bootstrap();
