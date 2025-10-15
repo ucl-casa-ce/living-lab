@@ -33,6 +33,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       JWT_SECRET: ${JWT_SECRET}
+      BACKEND_PORT: ${BACKEND_PORT}
     command: >
       sh -c "
       cd /app/ &&
