@@ -33,12 +33,13 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       JWT_SECRET: ${JWT_SECRET}
-    command: >
-      sh -c "
-      cd /app/ &&
-      npm install &&
-      npm run typeorm -- migration:run -d ./data-source.ts &&
-      npm run start:dev"
+    # command: >
+    #   sh -c "
+    #   cd /app/ &&
+    #   npm install &&
+    #   npm run typeorm -- migration:run -d ./data-source.ts &&
+    #   npm run start:dev"
+    entrypoint: ["tail", "-f", "/dev/null"]
     ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
     networks:
@@ -55,13 +56,14 @@ services:
 #      - df_frontend_data:/app
     environment:
       API_URL: ${API_URL}
-    command: >
-      sh -c "
-      cd /app/ &&
-      npm cache clean --force &&
-      npm i &&
-      npm run build &&
-      npx serve -s dist -l tcp:0.0.0.0:${FRONTEND_PORT}"
+    # command: >
+    #   sh -c "
+    #   cd /app/ &&
+    #   npm cache clean --force &&
+    #   npm i &&
+    #   npm run build &&
+    #   npx serve -s dist -l tcp:0.0.0.0:${FRONTEND_PORT}"
+    entrypoint: ["tail", "-f", "/dev/null"]
     ports:
       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     networks:
@@ -81,7 +83,8 @@ services:
     environment:
       FRONTEND_PORT: ${FRONTEND_PORT}
       BACKEND_PORT: ${BACKEND_PORT}
-    entrypoint: ["/bin/sh", "/custom-entrypoint.sh"]
+    #entrypoint: ["/bin/sh", "/custom-entrypoint.sh"]
+    entrypoint: ["tail", "-f", "/dev/null"]
     networks:
       - df-network
 
