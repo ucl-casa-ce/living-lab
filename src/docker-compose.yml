@@ -16,8 +16,6 @@ services:
 #      - df_postgres_data:/var/lib/postgresql/data
     networks:
       - df-network
-    env_file:
-      - .env
 
   backend:
     image: node:22.11.0
@@ -45,8 +43,6 @@ services:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
     networks:
       - df-network
-    env_file:
-      - .env
 
   frontend:
     image: node:22.11.0
@@ -70,8 +66,6 @@ services:
       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     networks:
       - df-network
-    env_file:
-      - .env
 
   nginx:
     image: nginx:1.27.4
@@ -90,8 +84,6 @@ services:
     entrypoint: ["/bin/sh", "/docker-entrypoint.sh"]
     networks:
       - df-network
-    env_file:
-      - .env
 
   #nodered:
   #  image: nodered/node-red:latest
