@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15
-    container_name: postgres_db
+    container_name: postgres_db_livinglab
     restart: always
     environment:
       POSTGRES_USER: ${DB_USER}
@@ -12,8 +12,7 @@ services:
     ports:
       - "${DB_PORT}:${DB_PORT}"
     volumes:
-      - ./database:/var/lib/postgresql/data
-#      - df_postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - df-network
 
@@ -86,7 +85,7 @@ services:
     networks:
       - df-network
 
-  #nodered:
+  # nodered:
   #  image: nodered/node-red:latest
   #  container_name: nodered
   #  ports:
@@ -104,7 +103,5 @@ networks:
   df-network:
     driver: bridge
 
-#volumes:
-#  df_postgres_data:
-#  df_backend_data:
-#  df_frontend_data:
+volumes:
+  postgres_data:
