@@ -9,7 +9,7 @@ This repository contains comprehensive documentation and resources for the Livin
 ## 📚 Content Guide
 
 - **General video (covers manager and users)**
-    - A comprehensive video tutorial about the Living Lab platform is available on LLDC's Drive.
+    - A comprehensive video tutorial about the Living Lab platform is available on project's Drive.
 
 - **Platform manager**
     - [Admin responsibilities & approval process](docs/admin-responsibilities.md)
@@ -69,7 +69,7 @@ This repository contains comprehensive documentation and resources for the Livin
 
 ## 🎥 General Video
 
-A comprehensive video tutorial about the Living Lab platform is available on LLDC's Drive. The tutorial covers:
+A comprehensive video tutorial about the Living Lab platform is available on project's Drive. The tutorial covers:
 
 - Platform introduction and explanation of all features.
 - How-to-use guides for both normal users and admins.
@@ -79,7 +79,7 @@ A comprehensive video tutorial about the Living Lab platform is available on LLD
     - How admins approve requests, with practical notes.
 - Platform settings, user management, and statistics in the admin dashboard.
 
-Please refer to the LLDC Drive for access to the video.
+Please refer to the project's Drive for access to the video.
 
 ---
 
