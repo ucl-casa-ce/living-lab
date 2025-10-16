@@ -311,7 +311,7 @@ export function AdminAccessRequestsPage() {
                 {selectedRequest && (
                     <div style={{ padding: '20px' }}>
                         <Group mb="md">
-                            <Text fw={700} size="lg" style={{ color: '#FFC747' }}>
+                            <Text fw={700} size="lg" style={{ color: '#34C6C6' }}>
                                 Access Request for Dataset:
                             </Text>
                             <Text
@@ -378,7 +378,7 @@ export function AdminAccessRequestsPage() {
                             </div>
                         )}
                         <div style={{ marginBottom: '1rem' }}>
-                            <Text fw={500} size="sm" style={{ color: '#FFC747' }}>
+                            <Text fw={500} size="sm" style={{ color: '#34C6C6' }}>
                                 Project Description:
                             </Text>
                             <Text size="sm" style={{ whiteSpace: 'pre-wrap' }}>
@@ -386,7 +386,7 @@ export function AdminAccessRequestsPage() {
                             </Text>
                         </div>
                         <div style={{ marginBottom: '1rem' }}>
-                            <Text fw={500} size="sm" style={{ color: '#FFC747' }}>
+                            <Text fw={500} size="sm" style={{ color: '#34C6C6' }}>
                                 Usage Details:
                             </Text>
                             <Text size="sm" style={{ whiteSpace: 'pre-wrap' }}>

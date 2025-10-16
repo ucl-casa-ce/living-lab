@@ -446,7 +446,7 @@ export function Dataset() {
 
                     {/* Last Updated Section */}
                     <Group style={{ marginLeft: 'auto' }}>
-                        <IconClock size={20} color='#FFC747' />
+                        <IconClock size={20} color='#34C6C6' />
                         <Text>Last updated: {dataset.updatedAt}</Text>
                     </Group>
                 </Group>
@@ -470,17 +470,17 @@ export function Dataset() {
                 <Group mt={'xs'} align="center" style={{ width: '100%' }}>
                     {/* Provider */}
                     <Group>
-                        <IconUser size={20} color="#d7bf3c" />
+                        <IconUser size={20} color="#34C6C6" />
                         <Text>Owner: {dataset.dataOwnerName}</Text>
                     </Group>
 
                     {/* License */}
                     <Group>
-                        <IconLicense size={20} color="#d7bf3c" />
+                        <IconLicense size={20} color="#34C6C6" />
                         <Text>Type: {dataset.datasetType}</Text>
                     </Group>
                     <Group>
-                        <IconReload size={20} color="#d7bf3c" />
+                        <IconReload size={20} color="#34C6C6" />
                         <Text>Update Frequency: {dataset.updateFrequency} {dataset.updateFrequencyUnit}</Text>
                     </Group>
                 </Group>

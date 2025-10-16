@@ -90,7 +90,7 @@ export function ShowcaseCard({
                         className="card"
                         style={{
                             border: 'none',
-                            backgroundColor: '#1F5754',
+                            backgroundColor: '#333333',
                             width: '350px',
                             minHeight: '400px',
                             display: 'flex',
@@ -161,7 +161,7 @@ export function ShowcaseCard({
                                         size={30}
                                         radius="xl"
                                         mr="xs"
-                                        bg={'#1f5754'}
+                                        bg={'#333333'}
                                     />
                                     <Text c="white" fz="m" inline>
                                         {`${user.firstName} ${user.lastName}`}
@@ -185,7 +185,7 @@ export function ShowcaseCard({
                         <Group mt="auto" style={{ marginTop: 'auto' }} >
                             <Button
                                 variant="outline"
-                                color="#d7bf3c"
+                                color="#34C6C6"
                                 style={{ flex: 1 }}
                                 component={Link}
                                 to={`/showcase/${id}`}
@@ -226,7 +226,7 @@ export function ShowcaseCard({
                     className="card"
                     style={{
                         border: 'none',
-                        backgroundColor: '#1F5754',
+                        backgroundColor: '#333333',
                         width: '350px',
                         minHeight: '400px',
                         display: 'flex',
@@ -297,7 +297,7 @@ export function ShowcaseCard({
                                     size={30}
                                     radius="xl"
                                     mr="xs"
-                                    bg={'#1f5754'}
+                                    bg={'#333333'}
                                 />
                                 <Text c="white" fz="m" inline>
                                     {`${user.firstName} ${user.lastName}`}
@@ -321,7 +321,7 @@ export function ShowcaseCard({
                     <Group mt="auto" style={{ marginTop: 'auto' }} >
                         <Button
                             variant="outline"
-                            color="#d7bf3c"
+                            color="#34C6C6"
                             style={{ flex: 1 }}
                             component={Link}
                             to={`/showcase/${id}`}

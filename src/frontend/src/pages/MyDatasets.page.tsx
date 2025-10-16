@@ -90,7 +90,7 @@ export function MyDatasetsPage() {
                 <Space h="md" />
                 <Center style={{ height: '60vh' }}>
                     <Stack align="center">
-                        <IconCloudOff size={64} color="#FFC747" />
+                        <IconCloudOff size={64} color="#34C6C6" />
                         <Text c="white" fz="lg" fw={500}>
                             {error}
                         </Text>
@@ -121,7 +121,7 @@ export function MyDatasetsPage() {
                 <Space h="md" />
                 <Center style={{ height: '60vh' }}>
                     <Stack align="center">
-                        <IconDatabaseOff size={64} color="#FFC747" />
+                        <IconDatabaseOff size={64} color="#34C6C6" />
                         <Text c="white" fz="lg" fw={500}>
                             No datasets found
                         </Text>

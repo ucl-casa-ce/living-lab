@@ -76,7 +76,7 @@ export function AdminPage() {
                 <Modal
                     opened={modalOpened}
                     onClose={closeModal}
-                    c='#FFC747'
+                    c='#34C6C6'
                     className={classes.modalcustom}
                     title="Changelog"
                     size="md"

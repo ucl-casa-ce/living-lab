@@ -40,7 +40,7 @@ export function HomeShowcaseCard({
             to={`/showcase/${id}`}
             style={{
                 border: 'none',
-                backgroundColor: '#1F5754',
+                backgroundColor: '#333333',
                 textDecoration: 'none',
                 height: '100%', // Ensure consistent height
                 display: 'flex',

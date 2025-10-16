@@ -125,7 +125,7 @@ export function MyAccessRequestsPage() {
                             <Text
                                 fw={700}
                                 size="lg"
-                                style={{ color: '#FFC747', cursor: 'pointer', textDecoration: 'underline' }}
+                                style={{ color: '#34C6C6', cursor: 'pointer', textDecoration: 'underline' }}
                                 component={Link}
                                 to={`/dataset/${request.dataset.id}`}
                             >
@@ -169,13 +169,13 @@ export function MyAccessRequestsPage() {
                             </Group>
                         )}
                         <Divider my="sm" color="gray" />
-                        <Text size="sm" fw={500} style={{ color: '#FFC747', marginBottom: '4px' }}>
+                        <Text size="sm" fw={500} style={{ color: '#34C6C6', marginBottom: '4px' }}>
                             Project Description:
                         </Text>
                         <Text size="sm" style={{ whiteSpace: 'pre-wrap' }}>
                             {request.projectDescription}
                         </Text>
-                        <Text size="sm" fw={500} style={{ color: '#FFC747', marginTop: '12px', marginBottom: '4px' }}>
+                        <Text size="sm" fw={500} style={{ color: '#34C6C6', marginTop: '12px', marginBottom: '4px' }}>
                             Usage Details:
                         </Text>
                         <Text size="sm" style={{ whiteSpace: 'pre-wrap' }}>
