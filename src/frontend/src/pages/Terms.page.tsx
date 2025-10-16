@@ -15,7 +15,7 @@ export function TermsPage() {
                     <>
                         <Title order={3} mt="md" mb="xs">Introduction</Title>
                         <Text>
-                            Welcome to the LLDC Digital Frontiers Platform. By accessing and using data sets available on this platform, you agree to comply with these Terms of Use. These terms outline the rules for using both open data sets under standard licenses and closed data sets subject to specific agreements.
+                            Welcome to the Living Lab Platform. By accessing and using data sets available on this platform, you agree to comply with these Terms of Use. These terms outline the rules for using both open data sets under standard licenses and closed data sets subject to specific agreements.
                         </Text>
 
                         <Title order={3} mt="md" mb="xs">Categories of Data</Title>

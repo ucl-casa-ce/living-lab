@@ -7,7 +7,7 @@ export function AboutPage() {
     return (
         <Container size="md" py="xl">
             <Title order={2} mb="xl">
-                Digital Frontiers | Innovation District
+                Living Lab
             </Title>
             <Image
                 src="/imgs/qeop-hero7.jpg"
@@ -33,7 +33,7 @@ export function AboutPage() {
                                     A Roadmap for a Smarter, Greener, Inclusive Future
                                 </Text>
                                 <Text>
-                                    LLDC Digital Frontiers is an ambitious digital ecosystem initiative based at the Queen Elizabeth Olympic Park (QEOP). Built on the legacy of the 2012 Olympic and Paralympic Games, it aims to transform the park into a living laboratory for data-driven innovation, sustainability, and inclusive urban development.
+                                    Living Lab is an ambitious digital ecosystem initiative based at the Queen Elizabeth Olympic Park (QEOP). Built on the legacy of the 2012 Olympic and Paralympic Games, it aims to transform the park into a living laboratory for data-driven innovation, sustainability, and inclusive urban development.
                                 </Text>
                                 <Text>
                                     At its core, LLDC fosters a new model for real-time, spatially aware digital infrastructure—one that empowers policy-makers, startups, academic researchers, and local communities alike. Through the integration of live data, digital twins, and collaborative tools, it offers a template for a more informed, responsive, and equitable governance system.
@@ -79,7 +79,7 @@ export function AboutPage() {
 
                         <Paper withBorder p="md" radius="md">
                             <Text>
-                                LLDC Digital Frontiers supports a variety of users, from city authorities to citizen scientists. Key platform functions include:
+                                Living Lab supports a variety of users, from city authorities to citizen scientists. Key platform functions include:
                             </Text>
                             <ul>
                                 <li><Text>Data visualization and real-time analytics</Text></li>
@@ -96,10 +96,10 @@ export function AboutPage() {
 
                         <Paper withBorder p="md" radius="md">
                             <Text>
-                                By 2030, LLDC aims to be a replicable, open-source data model for smart, inclusive, and sustainable urban spaces across the UK. Beyond that, it envisions a global network of Digital Frontiers hubs—co-creating a resilient digital future that values people, planet, and progress.
+                                By 2030, Living Lab aims to be a replicable, open-source data model for smart, inclusive, and sustainable urban spaces across the UK. Beyond that, it envisions a global network of Living Lab hubs—co-creating a resilient digital future that values people, planet, and progress.
                             </Text>
                             <Text mt="sm" c="dimmed">
-                                © 2025 LLDC Digital Frontiers | Powered by Queen Elizabeth Olympic Park, UCL, Arup, and community partners
+                                © 2025 Living Lab | Powered by the Connected Environments Lab, UCL, Arup, and community partners
                             </Text>
                         </Paper>
                     </>

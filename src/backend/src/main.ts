@@ -9,8 +9,8 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule); // Specify NestExpressApplication
 
   const config = new DocumentBuilder()
-    .setTitle('Digital Frontiers API')
-    .setDescription('The Digital Frontiers API description')
+    .setTitle('Living Lab API')
+    .setDescription('The Living Lab API description')
     .setVersion('1.0')
     .addBearerAuth() // Add Bearer token authentication
     .build();

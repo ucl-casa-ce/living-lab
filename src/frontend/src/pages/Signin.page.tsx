@@ -232,7 +232,7 @@ export function SigninPage() {
                         mb="md"
                     />
                     <Checkbox
-                        label="By signing up to the LLDC Digital Frontiers Platform,
+                        label="By signing up to the Living Lab Platform,
                          you agree to:"
                         required
                         {...form.getInputProps('termsAccepted', { type: 'checkbox' })}
