@@ -1,5 +1,5 @@
 import { IconBrandInstagram, IconBrandTwitter, IconBrandYoutube } from '@tabler/icons-react';
-import { ActionIcon, Container, Group, Text } from '@mantine/core';
+import { ActionIcon, Container, Group, Text, Image } from '@mantine/core';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import { Link as RouterLink } from 'react-router-dom';
 import classes from './FooterLinks.module.css';
@@ -25,11 +25,9 @@ const data = [
   {
     title: 'Stay in touch',
     links: [
-      { label: 'Facebook', link: 'https://www.facebook.com/queenelizabetholympicpark' },
-      { label: 'X', link: 'https://x.com/noordinarypark' },
-      { label: 'Instagram', link: 'https://www.instagram.com/queenelizabetholympicpark/' },
-      { label: 'LinkedIn', link: 'https://www.linkedin.com/company/the-london-legacy-development-corporation/' },
-      { label: 'TikTok', link: 'https://www.tiktok.com/@noordinarypark' },
+      { label: 'X', link: 'https://twitter.com/casaucl' },
+      { label: 'Instagram', link: 'https://www.instagram.com/uclcelab/' },
+      { label: 'LinkedIn', link: 'https://www.linkedin.com/company/centre-for-advanced-spatial-analysis' },
     ],
   },
 ];
@@ -77,20 +75,28 @@ export function FooterLinks() {
   });
 
   return (
-    <footer style={{ backgroundColor: '#1F5754' }} className={classes.footer}>
+    <footer style={{ backgroundColor: '#333333' }} className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <Text fw={700} c="white" size="lg">Digital Frontiers</Text>
+          <Image
+            src="imgs/apple-touch-icon.png"
+            alt="Sample"
+            style={{
+              width: '89px',
+            }}
+          />
 
-          <Text size="xs" c="white" className={classes.description}>
-            A Data-as-a-Service (DaaS) platform for the Queen Elizabeth Olympic Park Innovation District
+          <Text fw={700} c="#34C6C6" size="lg">Living Lab</Text>
+
+          <Text size="s" c="white" className={classes.description}>
+            UCL Living lab, an 10-years evolving data platform
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
         <Text c="white" size="sm">
-          <span style={{ color: '#FFC747' }}>©</span> {new Date().getFullYear()} LLDC.  All rights reserved.
+          <span style={{ color: '#34C6C6' }}>©</span> {new Date().getFullYear()} Powered by Connected Environments Lab.  All rights reserved.
         </Text>
       </Container>
     </footer>

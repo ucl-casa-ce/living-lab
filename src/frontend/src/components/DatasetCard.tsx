@@ -39,7 +39,7 @@ export function DatasetCard({
                 className="card"
                 style={{
                     border: 'none',
-                    backgroundColor: '#1F5754',
+                    backgroundColor: '#333333',
                     width: '350px',
                     minHeight: '400px',
                     display: 'flex', // Make the card a flex container
@@ -62,7 +62,7 @@ export function DatasetCard({
                             position: 'absolute',
                             bottom: 10,
                             left: 10,
-                            backgroundColor: '#1f5753d1',
+                            backgroundColor: '#212121d1',
                             color: '#c9f3f1',
                         }}
                     >
@@ -86,8 +86,8 @@ export function DatasetCard({
                                 position: 'absolute',
                                 bottom: 10,
                                 right: 10,
-                                backgroundColor: '#f7bf3c',
-                                color: '#1f5754',
+                                backgroundColor: '#34C6C6',
+                                color: '#333333',
                             }}
                         >
                             Controlled
@@ -109,7 +109,7 @@ export function DatasetCard({
                     </Group>
                     <Group mt="xs" justify="apart">
                         <Center>
-                            <Avatar size={30} radius="xl" mr="xs" bg={'#1f5754'} />
+                            <Avatar size={30} radius="xl" mr="xs" bg={'#333333'} />
                             <Text c="white" fz="m" inline>
                                 {dataOwnerName}
                             </Text>
@@ -138,7 +138,7 @@ export function DatasetCard({
                         <Badge
                             key={index}
                             variant="outline"
-                            color="#d7bf3c"
+                            color="#34C6C6"
                             leftSection={tag.icon}
                         >
                             {tag.name}

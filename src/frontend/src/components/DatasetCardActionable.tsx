@@ -92,7 +92,7 @@ export function DatasetCardActionable({
                 className="card"
                 style={{
                     border: 'none',
-                    backgroundColor: '#1F5754',
+                    backgroundColor: '#333333',
                     width: '350px',
                     minHeight: '400px',
                     display: 'flex', // Make the card a flex container
@@ -138,7 +138,7 @@ export function DatasetCardActionable({
                                 bottom: 10,
                                 right: 10,
                                 backgroundColor: '#f7bf3c',
-                                color: '#1f5754',
+                                color: '#333333',
                             }}
                         >
                             Controlled
@@ -160,7 +160,7 @@ export function DatasetCardActionable({
                     </Group>
                     <Group mt="xs" justify="apart">
                         <Center>
-                            <Avatar size={30} radius="xl" mr="xs" bg={'#1f5754'} />
+                            <Avatar size={30} radius="xl" mr="xs" bg={'#333333'} />
                             <Text c="white" fz="m" inline>
                                 {dataOwnerName}
                             </Text>
@@ -189,7 +189,7 @@ export function DatasetCardActionable({
                         <Badge
                             key={index}
                             variant="outline"
-                            color="#d7bf3c"
+                            color="#34C6C6"
                             leftSection={tag.icon}
                         >
                             {tag.name}

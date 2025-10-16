@@ -46,13 +46,6 @@ export function HomePage() {
   if (!partners.length) {
     partners = [
       {
-        id: 1,
-        name: 'University College London',
-        date: '',
-        imageLink:
-          'https://www.ucl.ac.uk/brand/sites/brand/files/styles/small_image/public/ucl-logo-black-on-grey.jpg?itok=ooOI6Tcx',
-      },
-      {
         id: 2,
         name: 'Queen Elizabeth Park',
         date: '',
@@ -79,11 +72,11 @@ export function HomePage() {
   // Use hero_main_text and hero_secondary_text from settings if available
   const heroMainText = settings?.hero_main_text?.trim()
     ? settings.hero_main_text
-    : 'A Data Platform for <span style="color: #FFC747;">Digital Innovators</span> to Collaborate, Test and Showcase';
+    : 'A Data Platform for <span style="color: #34C6C6;">Digital Innovators</span> to Collaborate, Test and Showcase';
 
   const heroSecondaryText = settings?.hero_secondary_text?.trim()
     ? settings.hero_secondary_text
-    : 'Digital Frontiers provides innovators with a set of curated data streams and product showcasing tools. <br />All data is hyperlocal, co-located in Queen Elizabeth Olympic Park and is ready for plug and play collaboration.';
+    : 'Living Lab provides innovators with a set of curated data streams and product showcasing tools. <br />All data is hyperlocal, co-located in Queen Elizabeth Olympic Park and is ready for plug and play collaboration.';
 
   interface DatasetItem {
     id: number;
@@ -131,13 +124,13 @@ export function HomePage() {
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsFading(true); // Start fading
-      setTimeout(() => {
-        setImageSrc('/imgs/qeop-hero8.jpg'); // New image source
-        setIsFading(false); // Reset fade effect
-      }, 500); // Duration of the fade-out effect
-    }, 3000); // Delay before image change
+    // const timer = setTimeout(() => {
+    //   setIsFading(true); // Start fading
+    //   setTimeout(() => {
+    //     setImageSrc('/imgs/qeop-hero8.jpg'); // New image source
+    //     setIsFading(false); // Reset fade effect
+    //   }, 500); // Duration of the fade-out effect
+    // }, 3000); // Delay before image change
 
     axiosInstance
       .get(`/datasets/recent`)
@@ -189,18 +182,19 @@ export function HomePage() {
         setLoading(false);
       });
 
-    return () => clearTimeout(timer); // Cleanup the timer
+    return; // Cleanup the timer
   }, []);
 
 
 
   return (
     <>
-      <div style={{ backgroundColor: '#173B3B' }}>
+      <div style={{ backgroundColor: '#1a1a1a' }}>
 
         <Box
           style={{
             position: 'relative',
+            height: '364px',
           }}
         >
           {/* Image component */}
@@ -218,7 +212,7 @@ export function HomePage() {
 
           {/* Overlay component */}
           <Overlay
-            gradient="linear-gradient(180deg,rgb(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.0) 20%)" // Gradient overlay
+            gradient="linear-gradient(180deg,rgb(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.0) 30%)" // Gradient overlay
             opacity={1} // Adjust opacity
             color="#fff" // Optional fallback color
             style={{
@@ -231,9 +225,8 @@ export function HomePage() {
           />
 
           <Overlay
-            gradient="linear-gradient(0deg, #173B3B 0%, rgba(0, 0, 0, 0.0) 35%)" // Gradient overlay
-            opacity={1} // Adjust opacity
-            color="#fff" // Optional fallback color
+            opacity={0.7} // Adjust opacity
+            color="#1a1a1a70" // Optional fallback color
             style={{
               position: 'absolute',
               top: 0,
@@ -301,7 +294,7 @@ export function HomePage() {
                 {/* First showcase - larger card */}
                 {latestShowcases.length > 0 && (
                   <Card
-                    style={{ backgroundColor: '#1F5754' }}
+                    style={{ backgroundColor: '#333333' }}
                     p="md"
                     radius="md"
                     component={Link}
@@ -338,7 +331,7 @@ export function HomePage() {
                   {latestShowcases.length > 1 && (
                     <Grid.Col>
                       <Card
-                        style={{ backgroundColor: '#1F5754' }}
+                        style={{ backgroundColor: '#333333' }}
                         p="md"
                         radius="md"
                         component={Link}
@@ -368,7 +361,7 @@ export function HomePage() {
                   <Grid.Col span={6}>
                     {latestShowcases.length > 2 && (
                       <Card
-                        style={{ backgroundColor: '#1F5754' }}
+                        style={{ backgroundColor: '#333333' }}
                         p="md"
                         radius="md"
                         component={Link}
@@ -405,7 +398,7 @@ export function HomePage() {
                   <Grid.Col span={6}>
                     {latestShowcases.length > 3 && (
                       <Card
-                        style={{ backgroundColor: '#1F5754' }}
+                        style={{ backgroundColor: '#333333' }}
                         p="md"
                         radius="md"
                         component={Link}
@@ -450,7 +443,7 @@ export function HomePage() {
                 component={Link}
                 to="/showcases"
                 variant="outline"
-                color="#FFC747"
+                color="#34C6C6"
                 size="md"
               >
                 View All Showcases
@@ -458,30 +451,31 @@ export function HomePage() {
             </Group>
           </Container>
 
-          <Text mt="3rem" ta="center" className='title' c="white" >Partners</Text>
+          <Text mt="3rem" ta="center" className='title' c="white" >Founding Partners</Text>
           <Container py="xl">
-            <SimpleGrid cols={{ base: 1, sm: 4 }}>
-              {partners.map((partner) => (
-                <Card
-                  key={partner.id}
-                  style={{ backgroundColor: '#1F5754' }}
-                  p="md"
-                  radius="md"
-                  component="a"
-                  href="#"
-                  className={'.card'}
-                >
-                  <AspectRatio ratio={1920 / 1080}>
-                    <Image src={partner.imageLink} />
-                  </AspectRatio>
+            <Flex justify="center" align="center">
+              <SimpleGrid cols={{ base: 1, sm: Math.min(partners.length, 5) }}>
+                {partners.map((partner) => (
+                  <Card
+                    key={partner.id}
+                    style={{ backgroundColor: '#333333' }}
+                    p="md"
+                    radius="md"
+                    component="a"
+                    href="#"
+                    className={'.card'}
+                  >
+                    <AspectRatio ratio={1920 / 1080}>
+                      <Image src={partner.imageLink} />
+                    </AspectRatio>
 
-                  <Text c="white" className={'.title'} mt={5}>
-                    {partner.name}
-                  </Text>
-                </Card>
-              ))}
-
-            </SimpleGrid>
+                    <Text c="white" className={'.title'} mt={5}>
+                      {partner.name}
+                    </Text>
+                  </Card>
+                ))}
+              </SimpleGrid>
+            </Flex>
           </Container>
         </div >
       </div >

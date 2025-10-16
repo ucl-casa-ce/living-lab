@@ -119,7 +119,7 @@ button:hover {
 }
 
 .modalcustom {
-  --mantine-color-body: #1F5754 !important;
+  --mantine-color-body: #333333 !important;
   --mantine-color-text: white;
   background-color: #173B3B !important;
   color: white;
