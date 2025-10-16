@@ -59,7 +59,7 @@ This repository contains comprehensive documentation and resources for the Livin
 - **Tech stack**
   - [`tech-stack/`](docs/tech-stack/)  
     Details and diagrams about the technology stack used.
-  - [`tech-stack-v5.jpg`](docs/tech-stack/tech-stack-v5.jpg)  
+  - [`tech-stack-v5.png`](docs/tech-stack/tech-stack-v5.png)  
     ![tech-stack-v5](docs/tech-stack/tech-stack-v5.png)
 
 - **Code structure**
