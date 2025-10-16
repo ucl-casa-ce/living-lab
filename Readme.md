@@ -1,15 +1,15 @@
-# Digital Frontiers Documentation Overview
+# Living Lab Documentation Overview
 
-![Digital Frontiers Home](docs/DigitalFrontiersHome.png)
+![Living Lab Home](docs/DigitalFrontiersHome.png)
 
-This repository contains comprehensive documentation and resources for the Digital Frontiers platform.
+This repository contains comprehensive documentation and resources for the Living Lab platform.
 
 ---
 
 ## 📚 Content Guide
 
 - **General video (covers manager and users)**
-    - A comprehensive video tutorial about the Digital Frontiers platform is available on LLDC's Drive.
+    - A comprehensive video tutorial about the Living Lab platform is available on LLDC's Drive.
 
 - **Platform manager**
     - [Admin responsibilities & approval process](docs/admin-responsibilities.md)
@@ -60,7 +60,7 @@ This repository contains comprehensive documentation and resources for the Digit
   - [`tech-stack/`](docs/tech-stack/)  
     Details and diagrams about the technology stack used.
   - [`tech-stack-v3.jpg`](docs/tech-stack/tech-stack-v4.jpg)  
-    ![tech-stack-v3](docs/tech-stack/tech-stack-v4.png)
+    ![tech-stack-v3](docs/tech-stack/tech-stack-v5.png)
 
 - **Code structure**
   - See [`docs/code-structure.md`](docs/code-structure.md) for the detailed code structure documentation.
@@ -69,7 +69,7 @@ This repository contains comprehensive documentation and resources for the Digit
 
 ## 🎥 General Video
 
-A comprehensive video tutorial about the Digital Frontiers platform is available on LLDC's Drive. The tutorial covers:
+A comprehensive video tutorial about the Living Lab platform is available on LLDC's Drive. The tutorial covers:
 
 - Platform introduction and explanation of all features.
 - How-to-use guides for both normal users and admins.
