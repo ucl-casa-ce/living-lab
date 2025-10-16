@@ -241,7 +241,7 @@ export function SigninPage() {
                     <Text c="dimmed" size="sm" ml={"xl"}>
                         Comply with the Terms of Use which govern the use of both open data (under standard licenses, reflecting our commitment to open access)
                         and closed data (requiring specific agreements), and outline responsibilities,
-                        compliance requirements, liability disclaimers, and LLDC's right to modify
+                        compliance requirements, liability disclaimers, and Living Lab's right to modify
                         the terms. <Link target={"_blank"} to="/terms" style={{ color: '#1E90FF', textDecoration: 'underline' }}>Read the full terms from here.</Link>
                     </Text>
                     <Button fullWidth variant="filled" color="blue" mt="lg" type="submit">
