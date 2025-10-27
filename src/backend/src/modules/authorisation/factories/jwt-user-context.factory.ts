@@ -62,7 +62,8 @@ export class JwtUserContextFactory {
      */
     async createFromUserId(userId: string): Promise<UserContext> {
         const user = await this.usersRepository.findOne({
-            where: { id: userId }
+            where: { id: userId },
+            select: ['id', 'firstName', 'lastName', 'company', 'type', 'isActivated', 'createdAt', 'updatedAt', 'deletedAt', 'email', 'isAdmin'],
         });
 
         if (!user) {

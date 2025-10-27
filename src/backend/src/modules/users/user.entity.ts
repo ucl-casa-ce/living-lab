@@ -27,7 +27,7 @@ export class User {
     @PrimaryGeneratedColumn('uuid')
     id!: string;
 
-    @Column({ unique: true })
+    @Column({ unique: true, select: false })
     @Index()
     email!: string;
 
@@ -47,7 +47,7 @@ export class User {
     @Check(`"type" IN ('public_sector', 'sme', 'large_business', 'university', 'citizen_scientist', 'none')`)
     type!: UserType;
 
-    @Column({ default: false })
+    @Column({ default: false, select: false })
     isAdmin!: boolean;
 
     @Column({ nullable: true, select: false })

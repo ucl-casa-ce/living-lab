@@ -27,11 +27,16 @@ export class UsersService {
     }
 
     findAll(): Promise<User[]> {
-        return this.usersRepository.find();
+        return this.usersRepository.find({
+            select: ['id', 'firstName', 'lastName', 'company', 'type', 'isActivated', 'createdAt', 'updatedAt', 'deletedAt', 'email', 'isAdmin'],
+        });
     }
 
     findOne(id: string): Promise<User | null> {
-        return this.usersRepository.findOneBy({ id });
+        return this.usersRepository.findOne({
+            where: { id },
+            select: ['id', 'firstName', 'lastName', 'company', 'type', 'isActivated', 'createdAt', 'updatedAt', 'deletedAt', 'email', 'isAdmin'],
+        });
     }
 
     async remove(id: number): Promise<void> {
@@ -39,7 +44,10 @@ export class UsersService {
     }
 
     async findByEmail(email: string): Promise<User | undefined> {
-        return this.usersRepository.findOne({ where: { email } });
+        return this.usersRepository.findOne({
+            where: { email },
+            select: ['id', 'firstName', 'lastName', 'company', 'type', 'isActivated', 'createdAt', 'updatedAt', 'deletedAt', 'email', 'isAdmin'],
+        });
     }
 
     async findByEmailWithPassword(email: string): Promise<User | undefined> {
