@@ -9,8 +9,8 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
-    ports:
-      - "${DB_PORT}:${DB_PORT}"
+    #ports:
+     # - "${DB_PORT}:${DB_PORT}"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -39,8 +39,8 @@ services:
       npm install &&
       npm run typeorm -- migration:run -d ./data-source.ts &&
       npm run start:dev"
-    ports:
-      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    #ports:
+      #- "${BACKEND_PORT}:${BACKEND_PORT}"
     networks:
       - df-network
 
@@ -61,8 +61,8 @@ services:
       npm i &&
       npm run build &&
       npx serve -s dist -l tcp:0.0.0.0:${FRONTEND_PORT}"
-    ports:
-      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    #ports:
+     # - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     networks:
       - df-network
 
