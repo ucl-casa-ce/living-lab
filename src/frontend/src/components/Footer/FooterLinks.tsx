@@ -89,7 +89,7 @@ export function FooterLinks() {
           <Text fw={700} c="#34C6C6" size="lg">Living Lab</Text>
 
           <Text size="s" c="white" className={classes.description}>
-            UCL Living lab, an 10-years evolving data platform
+            UCL East Living lab, an 10-years evolving data platform
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>

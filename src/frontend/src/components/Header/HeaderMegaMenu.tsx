@@ -204,7 +204,7 @@ export function HeaderMegaMenu() {
       >
         <Group justify="space-between" h="100%">
           <a href="/" className="logo" style={{ display: 'flex', alignItems: 'normal', textDecoration: 'none' }}>
-            <span style={{ marginTop: 8, marginLeft: 10, color: 'rgb(255, 255, 255)', fontSize: 19, fontWeight: 600, textDecoration: 'none' }}>UCL</span>
+            <span style={{ marginTop: 8, marginLeft: 10, color: 'rgb(255, 255, 255)', fontSize: 19, fontWeight: 600, textDecoration: 'none' }}>UCL East</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 2 22"
