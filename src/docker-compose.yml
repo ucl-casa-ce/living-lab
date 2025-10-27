@@ -24,7 +24,7 @@ services:
     working_dir: /app
     volumes:
       - ./backend:/app
- #     - df_backend_data:/app
+      - backend_data:/app/uploads # Persist uploaded files
     environment:
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
@@ -52,7 +52,6 @@ services:
     working_dir: /app
     volumes:
       - ./frontend:/app
-#      - df_frontend_data:/app
     environment:
       API_URL: ${API_URL}
     command: >
@@ -105,3 +104,4 @@ networks:
 
 volumes:
   postgres_data:
+  backend_data:
