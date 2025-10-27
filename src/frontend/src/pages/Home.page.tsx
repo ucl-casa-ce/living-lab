@@ -250,8 +250,6 @@ export function HomePage() {
           <Space h="xl" />
           <Space h="xl" />
           <Space h="xl" />
-          <Space h="xl" />
-
 
           <Text ta="center" className='title' c="white" >Featured datasets</Text>
           <Text ta="center" size="s" c="white" >Browse the featured datasets below. You can go to the data menu section and

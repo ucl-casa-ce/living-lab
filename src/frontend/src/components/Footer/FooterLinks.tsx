@@ -18,8 +18,8 @@ const data = [
   {
     title: 'Open Source',
     links: [
-      { label: 'GitHub repository', link: 'https://github.com/syk-yaman/digital-frontiers' },
-      { label: 'GitHub discussions', link: 'https://github.com/syk-yaman/digital-frontiers/issues' },
+      { label: 'GitHub repository', link: 'https://github.com/ucl-casa-ce/living-lab/' },
+      { label: 'GitHub discussions', link: 'https://github.com/ucl-casa-ce/living-lab/issues' },
     ],
   },
   {

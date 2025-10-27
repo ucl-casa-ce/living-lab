@@ -7,7 +7,7 @@ export function AboutPage() {
     return (
         <Container size="md" py="xl">
             <Title order={2} mb="xl">
-                Living Lab
+                UCL East Living Lab
             </Title>
             <Image
                 src="/imgs/qeop-hero7.jpg"
