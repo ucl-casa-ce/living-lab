@@ -416,7 +416,7 @@ export function Dataset() {
                                     }}
                                 />
                             </Tooltip>
-                            <Text size="sm" c="#4caf50" fw={600}>Live status: Fresh</Text>
+                            <Text size="sm" c="#4caf50" fw={600}>Live dataset</Text>
                             <style>
                                 {`
                                 @keyframes blinker {
