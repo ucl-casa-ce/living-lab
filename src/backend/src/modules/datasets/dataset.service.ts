@@ -232,7 +232,7 @@ export class DatasetsService {
         }
 
         var savedDataset = await this.datasetRepository.save(newDataset);
-        }
+        // }
 
         // if (savedDataset.updateFrequencyUnit != UpdateFrequencyUnit.ONLY_ONCE) {
         //     this.nodeRedFlowService.addNodeRedFlowForDataset(savedDataset).catch((error) => {

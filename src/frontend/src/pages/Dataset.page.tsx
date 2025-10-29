@@ -402,7 +402,7 @@ export function Dataset() {
                     </Text>
                     {dataset.mqttAddress && (
                         <>
-                            <Tooltip label="Live dataset health status. Green means good connection and data flow." withArrow position="right">
+                            <Tooltip label="Live MQTT dataset" withArrow position="right">
                                 <span
                                     style={{
                                         display: 'inline-block',
