@@ -65,7 +65,11 @@ export class UsersService {
         try {
             // First ensure both users exist
             const user = await this.usersRepository.findOneBy({ id: userId });
-            const admin = await this.usersRepository.findOneBy({ id: adminId });
+            const admin = await this.usersRepository.findOne({
+                where: { id: adminId },
+                select: ['id', 'firstName', 'lastName', 'company', 'type', 'isActivated', 'createdAt', 'updatedAt', 'deletedAt', 'email', 'isAdmin'],
+            });
+
 
             if (!user) {
                 throw new HttpException('User not found', HttpStatus.NOT_FOUND);

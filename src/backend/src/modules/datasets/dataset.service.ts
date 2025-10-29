@@ -232,18 +232,23 @@ export class DatasetsService {
         }
 
         var savedDataset = await this.datasetRepository.save(newDataset);
-        if (savedDataset.updateFrequencyUnit != UpdateFrequencyUnit.ONLY_ONCE) {
-            this.nodeRedFlowService.addNodeRedFlowForDataset(savedDataset).catch((error) => {
-                Logger.error(`Failed to add Node-RED flow for dataset ${savedDataset.id}: ${error.message}`);
-            });
         }
+
+        // if (savedDataset.updateFrequencyUnit != UpdateFrequencyUnit.ONLY_ONCE) {
+        //     this.nodeRedFlowService.addNodeRedFlowForDataset(savedDataset).catch((error) => {
+        //         Logger.error(`Failed to add Node-RED flow for dataset ${savedDataset.id}: ${error.message}`);
+        //     });
+        // }
         return savedDataset;
     }
 
     async update(id: number, updateDto: UpdateDatasetDto, userContext: UserContext): Promise<Dataset> {
         const editDatasetInstance = plainToInstance(UpdateDatasetDto, updateDto);
 
-        const currentUser = await this.usersRepository.findOne({ where: { id: userContext.userId } });
+        const currentUser = await this.usersRepository.findOne({
+            where: { id: userContext.userId },
+            select: ['id', 'firstName', 'lastName', 'company', 'type', 'isActivated', 'createdAt', 'updatedAt', 'deletedAt', 'email', 'isAdmin'],
+        });
         if (!currentUser) {
             throw new Error('User not found');
         }
@@ -373,9 +378,9 @@ export class DatasetsService {
 
         if (await this.authorisationService.canDeleteDataset(dataset, userContext)) {
             await this.datasetRepository.delete(id);
-            this.nodeRedFlowService.removeNodeRedFlowForDataset(id).catch((error) => {
-                Logger.error(`Failed to remove Node-RED flow for dataset ${id}: ${error.message}`);
-            });
+            // this.nodeRedFlowService.removeNodeRedFlowForDataset(id).catch((error) => {
+            //     Logger.error(`Failed to remove Node-RED flow for dataset ${id}: ${error.message}`);
+            // });
         } else {
             throw new HttpException('You are not authorised to delete this dataset.', HttpStatus.FORBIDDEN);
         }
