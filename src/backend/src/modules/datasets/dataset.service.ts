@@ -110,7 +110,7 @@ export class DatasetsService {
     findRecent(): Promise<Dataset[]> {
         return this.datasetRepository.find({
             where: { approvedAt: Not(IsNull()) },
-            order: { createdAt: 'DESC' },
+            order: { updatedAt: 'DESC' },
             take: 3,
             relations: ['locations', 'sliderImages', 'tags'],
         });

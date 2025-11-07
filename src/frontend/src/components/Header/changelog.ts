@@ -1,5 +1,11 @@
-export const version = 'v1.1'
+export const version = 'v1.1.1'
 export const changelog = [
+    {
+        version: 'v1.1.1',
+        changes: [
+            "Minor fixes and updates.",
+        ],
+    },
     {
         version: 'v1.1',
         changes: [
