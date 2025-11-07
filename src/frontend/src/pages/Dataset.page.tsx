@@ -23,7 +23,7 @@ import {
     Textarea,
 } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
-import { IconClock, IconUser, IconLicense, IconCopy, IconReload, IconExternalLink, IconLock } from '@tabler/icons-react';
+import { IconClock, IconUser, IconLicense, IconCopy, IconReload, IconExternalLink, IconLock, IconMail } from '@tabler/icons-react';
 import { Map, Popup, useControl } from 'react-map-gl/maplibre';
 import { GeoJsonLayer, ScatterplotLayer } from '@deck.gl/layers';
 import DeckGL from '@deck.gl/react';
@@ -66,7 +66,7 @@ interface DatasetItem {
     deletedAt: string | null;
     links: { id: number; title: string; url: string }[]; // Replace 'any' with a more specific type if possible
     locations: any[];
-    sliderImages: { id: number; fileName: string }[];
+    sliderImages: { id: number, fileName: string }[];
     tags: { id: number; name: string; colour: string; icon: string }[];
     lastReading: string;
     mqttAddress: string,
@@ -471,7 +471,15 @@ export function Dataset() {
                     {/* Provider */}
                     <Group>
                         <IconUser size={20} color="#34C6C6" />
-                        <Text>Owner: {dataset.dataOwnerName}</Text>
+                        <Text>Owner: {dataset.dataOwnerName} </Text>
+                    </Group>
+
+                    <Group>
+                        <IconMail size={20} color="#34C6C6" />
+                        <Text>Contact: </Text>
+                        <Anchor href={`mailto:${dataset.dataOwnerEmail}`} c="#c9c9c9">
+                            {dataset.dataOwnerEmail}
+                        </Anchor>
                     </Group>
 
                     {/* License */}
@@ -481,7 +489,13 @@ export function Dataset() {
                     </Group>
                     <Group>
                         <IconReload size={20} color="#34C6C6" />
-                        <Text>Update Frequency: {dataset.updateFrequency} {dataset.updateFrequencyUnit}</Text>
+                        <Text>
+                            Update Frequency: {
+                                dataset.updateFrequency === 0 && dataset.updateFrequencyUnit === 'once'
+                                    ? 'Once'
+                                    : `${dataset.updateFrequency} ${dataset.updateFrequencyUnit}`
+                            }
+                        </Text>
                     </Group>
                 </Group>
 
