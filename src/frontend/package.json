@@ -17,7 +17,8 @@
     "vitest:watch": "vitest",
     "test": "npm run typecheck && npm run prettier && npm run lint && npm run vitest && npm run build",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@deck.gl/aggregation-layers": "^9.0.38",
@@ -50,6 +51,7 @@
     "embla-carousel-react": "^7.1.0",
     "mantine-datatable": "^7.17.1",
     "maplibre-gl": "^4.7.1",
+    "patch-package": "^8.0.1",
     "proj4": "^2.15.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
