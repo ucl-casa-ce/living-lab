@@ -7,13 +7,18 @@ import { AuthorisationService } from '../authorisation/authorisation.service';
 import { ApproveAccessRequestDto, CreateAccessRequestDto } from './access-request.dto';
 import { User } from '../users/user.entity';
 import { Dataset } from '../datasets/dataset.entity';
+import { NotificationsService } from '../notifications/notifications.service';
+import { AccessRequestNotificationAction } from '../notifications/enums/notification-action.enum';
 
 @Injectable()
 export class AccessRequestService {
     constructor(
         @InjectRepository(AccessRequest)
         private accessRequestRepository: Repository<AccessRequest>,
+        @InjectRepository(User)
+        private userRepository: Repository<User>,
         private authorisationService: AuthorisationService,
+        private notificationsService: NotificationsService,
     ) { }
 
     async createAccessRequest(dto: CreateAccessRequestDto, userContext: UserContext): Promise<AccessRequest> {
@@ -32,6 +37,17 @@ export class AccessRequestService {
         if (Array.isArray(savedAccessRequest)) {
             throw new HttpException('Unexpected array response from save method', HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+        // We need to fetch the request again to get the relations for the notification
+        const fullAccessRequest = await this.accessRequestRepository.findOne({
+            where: { id: savedAccessRequest.id },
+            relations: ['user', 'dataset'],
+        });
+
+        if (fullAccessRequest) {
+            this.notificationsService.sendSlackAccessRequestNotification(fullAccessRequest, AccessRequestNotificationAction.ADD);
+        }
+
         return savedAccessRequest;
     }
 

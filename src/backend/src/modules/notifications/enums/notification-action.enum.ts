@@ -9,3 +9,7 @@ export enum ShowcaseNotificationAction {
     UPDATE = 'update',
     DELETE = 'delete',
 }
+
+export enum AccessRequestNotificationAction {
+    ADD = 'add',
+}

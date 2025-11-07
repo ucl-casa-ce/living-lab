@@ -3,8 +3,9 @@ import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 import { User } from '../users/user.entity';
 import { Dataset } from '../datasets/dataset.entity';
-import { DatasetNotificationAction, ShowcaseNotificationAction } from './enums/notification-action.enum';
+import { DatasetNotificationAction, ShowcaseNotificationAction, AccessRequestNotificationAction } from './enums/notification-action.enum';
 import { Showcase } from '../showcases/showcase.entity';
+import { AccessRequest } from '../access-requests/access-request.entity';
 
 @Injectable()
 export class NotificationsService {
@@ -157,6 +158,51 @@ export class NotificationsService {
         };
 
         Logger.log(`Sending Slack notification for showcase ${action}: ${JSON.stringify(message)}`, 'NotificationsService');
+        await this.sendSlackNotification(message);
+    }
+
+    async sendSlackAccessRequestNotification(accessRequest: AccessRequest, action: AccessRequestNotificationAction): Promise<void> {
+        const { user, dataset, projectDescription } = accessRequest;
+
+        const description = projectDescription
+            ? (projectDescription.length > 250 ? `${projectDescription.substring(0, 247)}...` : projectDescription)
+            : 'No project description provided.';
+
+        let title = '';
+        if (action === AccessRequestNotificationAction.ADD) {
+            title = 'Controlled Dataset Access Request';
+        }
+
+        const message = {
+            text: `Access Request for Dataset: *${dataset.name}*`,
+            blocks: [
+                {
+                    type: 'header',
+                    text: {
+                        type: 'plain_text',
+                        text: title,
+                        emoji: true,
+                    },
+                },
+                {
+                    type: 'section',
+                    fields: [
+                        { type: 'mrkdwn', text: `*Dataset:*\n${dataset.name}` },
+                        { type: 'mrkdwn', text: `*Requested By:*\n${user.firstName} ${user.lastName}` },
+                        { type: 'mrkdwn', text: `*Company/University:*\n${user.company}` },
+                    ],
+                },
+                {
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `*Project Description:*\n${description}`,
+                    },
+                },
+            ],
+        };
+
+        Logger.log(`Sending Slack notification for access request ${action}: ${JSON.stringify(message)}`, 'NotificationsService');
         await this.sendSlackNotification(message);
     }
 }
