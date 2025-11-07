@@ -25,7 +25,23 @@ export class NotificationsService {
 
     async sendSlackNewUserNotification(user: User): Promise<void> {
         const message = {
-            text: `New user registered: ${user.firstName} ${user.lastName}`,
+            blocks: [
+                {
+                    type: 'header',
+                    text: {
+                        type: 'plain_text',
+                        text: 'New User Registered',
+                        emoji: true,
+                    },
+                },
+                {
+                    type: 'section',
+                    fields: [
+                        { type: 'mrkdwn', text: `*Name:*\n${user.firstName} ${user.lastName}` },
+                        { type: 'mrkdwn', text: `*Company/University:*\n${user.company}` },
+                    ],
+                },
+            ],
         };
         await this.sendSlackNotification(message);
     }

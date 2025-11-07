@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { JwtStrategy } from './jwt.strategy'; // Ensure this path is correct
 import { LocalStrategy } from './local.strategy';
+import { NotificationsModule } from '../notifications/notifications.module';
 
 @Module({
     imports: [
@@ -15,6 +16,7 @@ import { LocalStrategy } from './local.strategy';
             secret: process.env.JWT_SECRET,
             signOptions: { expiresIn: '24h' },
         }),
+        NotificationsModule
     ],
     providers: [AuthService, JwtStrategy, LocalStrategy], // Add LocalStrategy
     controllers: [AuthController],

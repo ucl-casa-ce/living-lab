@@ -2,12 +2,15 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt';
+import { NotificationsService } from '../notifications/notifications.service';
+import { User } from '../users/user.entity';
 
 @Injectable()
 export class AuthService {
     constructor(
         private readonly usersService: UsersService,
         private readonly jwtService: JwtService,
+        private readonly notificationsService: NotificationsService,
     ) { }
 
     async validateUser(email: string, password: string): Promise<any> {
@@ -31,6 +34,12 @@ export class AuthService {
         if (existingUser) {
             throw new UnauthorizedException('User already exists');
         }
-        return this.usersService.create(userDto);
+        const createdUser = await this.usersService.create(userDto);
+
+        const { password, ...result } = createdUser;
+
+        await this.notificationsService.sendSlackNewUserNotification(createdUser);
+
+        return result as User;
     }
 }
