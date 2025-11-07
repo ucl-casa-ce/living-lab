@@ -14,6 +14,8 @@ import { AccessRequest } from '../access-requests/access-request.entity';
 import { UserRole } from '../authorisation/enums/user-roles.enum';
 import axios from 'axios';
 import { NodeRedFlowService } from './node-red-flow.service';
+import { NotificationsService } from '../notifications/notifications.service';
+import { DatasetNotificationAction } from '../notifications/enums/notification-action.enum';
 
 @Injectable()
 export class DatasetsService {
@@ -32,6 +34,7 @@ export class DatasetsService {
         @InjectRepository(AccessRequest)
         private accessRequestRepository: Repository<AccessRequest>,
         private nodeRedFlowService: NodeRedFlowService,
+        private notificationsService: NotificationsService,
     ) { }
 
     async findAll(userContext: UserContext): Promise<Dataset[]> {
@@ -232,7 +235,11 @@ export class DatasetsService {
         }
 
         var savedDataset = await this.datasetRepository.save(newDataset);
-        // }
+
+        // Send notification if it's a new add request
+        if (!savedDataset.approvedAt) {
+            this.notificationsService.sendSlackDatasetNotification(savedDataset, user, DatasetNotificationAction.ADD);
+        }
 
         // if (savedDataset.updateFrequencyUnit != UpdateFrequencyUnit.ONLY_ONCE) {
         //     this.nodeRedFlowService.addNodeRedFlowForDataset(savedDataset).catch((error) => {
@@ -358,7 +365,12 @@ export class DatasetsService {
         }
 
         // Save the updated dataset
-        await this.datasetRepository.save(existingDataset);
+        var editedDataset = await this.datasetRepository.save(existingDataset);
+
+        // Send notification if it's a new edit request
+        if (!editedDataset.approvedAt) {
+            this.notificationsService.sendSlackDatasetNotification(editedDataset, currentUser, DatasetNotificationAction.UPDATE);
+        }
 
         // Fetch only the required fields and relations after saving
         return this.datasetRepository.findOne({
@@ -376,6 +388,14 @@ export class DatasetsService {
             throw new HttpException('Dataset not found', HttpStatus.NOT_FOUND);
         }
 
+        const user = await this.usersRepository.findOne({
+            where: { id: userContext.userId },
+            select: ['id', 'firstName', 'lastName', 'company', 'type', 'isActivated', 'createdAt', 'updatedAt', 'deletedAt', 'email', 'isAdmin'],
+        });
+        if (!user) {
+            throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+        }
+
         if (await this.authorisationService.canDeleteDataset(dataset, userContext)) {
             await this.datasetRepository.delete(id);
             // this.nodeRedFlowService.removeNodeRedFlowForDataset(id).catch((error) => {
@@ -385,6 +405,9 @@ export class DatasetsService {
             throw new HttpException('You are not authorised to delete this dataset.', HttpStatus.FORBIDDEN);
         }
 
+        // Send notification if dataset is deleted by non-admin user
+        if (!user.isAdmin)
+            this.notificationsService.sendSlackDatasetNotification(dataset, user, DatasetNotificationAction.DELETE);
     }
 
     async verifyMqttConnection(mqttAddress: string, mqttPort: number, mqttTopic: string, mqttUsername?: string, mqttPassword?: string): Promise<void> {

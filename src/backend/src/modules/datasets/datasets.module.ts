@@ -8,6 +8,7 @@ import { AuthorisationModule } from '../authorisation/authorisation.module';
 import { TagsModule } from '../tags/tags.module';
 import { AccessRequestsModule } from '../access-requests/access-requests.module';
 import { NodeRedFlowService } from './node-red-flow.service';
+import { NotificationsModule } from '../notifications/notifications.module';
 
 @Module({
     imports: [
@@ -15,6 +16,7 @@ import { NodeRedFlowService } from './node-red-flow.service';
         AuthorisationModule,
         TagsModule,
         AccessRequestsModule,
+        NotificationsModule
     ],
     providers: [DatasetsService, NodeRedFlowService],
     controllers: [DatasetsController],
