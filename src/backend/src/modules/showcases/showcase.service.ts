@@ -9,6 +9,8 @@ import { plainToInstance } from 'class-transformer';
 import { AuthorisationService } from '../authorisation/authorisation.service';
 import { Permission } from '../authorisation/enums/permissions.enum';
 import { UserContext } from '../authorisation/user-context';
+import { NotificationsService } from '../notifications/notifications.service';
+import { ShowcaseNotificationAction } from '../notifications/enums/notification-action.enum';
 
 @Injectable()
 export class ShowcasesService {
@@ -24,6 +26,7 @@ export class ShowcasesService {
         @InjectRepository(Dataset)
         private datasetRepository: Repository<Dataset>,
         private authorisationService: AuthorisationService,
+        private notificationsService: NotificationsService,
     ) { }
 
     async findAll(): Promise<Showcase[]> {
@@ -140,6 +143,11 @@ export class ShowcasesService {
             }
         }
 
+        // Send notification if it's a new add request
+        if (!savedShowcase.approvedAt) {
+            this.notificationsService.sendSlackShowcaseNotification(savedShowcase, user, ShowcaseNotificationAction.ADD);
+        }
+
         // Return the complete showcase
         return this.showcaseRepository.findOne({
             where: { id: savedShowcase.id },
@@ -228,6 +236,12 @@ export class ShowcasesService {
             }
         }
 
+        // Send notification if it's a new edit request
+        if (!existingShowcase.approvedAt) {
+            const user = await this.userRepository.findOneBy({ id: userContext.userId });
+            this.notificationsService.sendSlackShowcaseNotification(existingShowcase, user, ShowcaseNotificationAction.UPDATE);
+        }
+
         // Return updated showcase
         return this.showcaseRepository.findOne({
             where: { id },
@@ -252,6 +266,15 @@ export class ShowcasesService {
         }
 
         await this.showcaseRepository.delete(id);
+
+        const user = await this.userRepository.findOne({
+            where: { id: userContext.userId },
+            select: ['id', 'firstName', 'lastName', 'company', 'type', 'isActivated', 'createdAt', 'updatedAt', 'deletedAt', 'email', 'isAdmin'],
+        });
+
+        if (!user.isAdmin) {
+            this.notificationsService.sendSlackShowcaseNotification(showcase, user, ShowcaseNotificationAction.DELETE);
+        }
     }
 
     async approveShowcase(id: number, userContext: UserContext): Promise<Showcase> {

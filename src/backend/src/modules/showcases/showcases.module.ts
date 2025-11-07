@@ -6,11 +6,13 @@ import { ShowcasesService } from './showcase.service';
 import { User } from '../users/user.entity';
 import { Dataset } from '../datasets/dataset.entity';
 import { AuthorisationModule } from '../authorisation/authorisation.module';
+import { NotificationsModule } from '../notifications/notifications.module';
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([Showcase, ShowcaseSliderImage, ShowcaseLocation, User, Dataset]),
-        AuthorisationModule
+        AuthorisationModule,
+        NotificationsModule,
     ],
     providers: [ShowcasesService],
     controllers: [ShowcasesController],

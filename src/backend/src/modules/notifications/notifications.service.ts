@@ -3,7 +3,8 @@ import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 import { User } from '../users/user.entity';
 import { Dataset } from '../datasets/dataset.entity';
-import { DatasetNotificationAction } from './enums/notification-action.enum';
+import { DatasetNotificationAction, ShowcaseNotificationAction } from './enums/notification-action.enum';
+import { Showcase } from '../showcases/showcase.entity';
 
 @Injectable()
 export class NotificationsService {
@@ -100,6 +101,62 @@ export class NotificationsService {
         };
 
         Logger.log(`Sending Slack notification for dataset ${action}: ${JSON.stringify(message)}`, 'NotificationsService');
+        await this.sendSlackNotification(message);
+    }
+
+    async sendSlackShowcaseNotification(showcase: Showcase, user: User, action: ShowcaseNotificationAction): Promise<void> {
+        const description = showcase.description ?
+            (showcase.description.length > 250 ? `${showcase.description.substring(0, 247)}...` : showcase.description)
+            : 'No description provided.';
+
+        let title = '';
+        switch (action) {
+            case ShowcaseNotificationAction.ADD:
+                title = 'Showcase Add Request';
+                break;
+            case ShowcaseNotificationAction.UPDATE:
+                title = 'Showcase Update Request';
+                break;
+            case ShowcaseNotificationAction.DELETE:
+                title = 'Showcase Deleted';
+                break;
+        }
+
+        const fields = [
+            { type: 'mrkdwn', text: `*Showcase Title:*\n${showcase.title}` },
+            { type: 'mrkdwn', text: `*Action By:*\n${user.firstName} ${user.lastName}` },
+        ];
+
+        if (showcase.dataset) {
+            fields.push({ type: 'mrkdwn', text: `*Linked Dataset:*\n${showcase.dataset.name}` });
+        }
+
+        const message = {
+            text: `Showcase Notification: *${showcase.title}*`,
+            blocks: [
+                {
+                    type: 'header',
+                    text: {
+                        type: 'plain_text',
+                        text: title,
+                        emoji: true,
+                    },
+                },
+                {
+                    type: 'section',
+                    fields: fields,
+                },
+                {
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `*Description:*\n${description}`,
+                    },
+                },
+            ],
+        };
+
+        Logger.log(`Sending Slack notification for showcase ${action}: ${JSON.stringify(message)}`, 'NotificationsService');
         await this.sendSlackNotification(message);
     }
 }
