@@ -7,3 +7,4 @@ nginx.conf
 .env
 src/node-red/data
 model.json
+src/database/
