@@ -33,6 +33,7 @@ services:
       DB_NAME: ${DB_NAME}
       JWT_SECRET: ${JWT_SECRET}
       BACKEND_PORT: ${BACKEND_PORT}
+      SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL}
     command: >
       sh -c "
       cd /app/ &&
