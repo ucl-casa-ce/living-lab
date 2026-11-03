@@ -1,6 +1,12 @@
 export const version = 'v1.2'
 export const changelog = [
     {
+        version: 'v1.2.1',
+        changes: [
+            "Security fixes.",
+        ],
+    },
+    {
         version: 'v1.2',
         changes: [
             "Added Slack notifications.",
