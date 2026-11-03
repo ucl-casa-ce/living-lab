@@ -17,7 +17,7 @@ services:
       - df-network
 
   backend:
-    image: node:22.11.0
+    image: node:22.23.4
     container_name: backend
     depends_on:
       - postgres
@@ -46,7 +46,7 @@ services:
       - df-network
 
   frontend:
-    image: node:22.11.0
+    image: node:22.23.4
     container_name: frontend
     depends_on:
       - backend
